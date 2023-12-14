@@ -7,7 +7,6 @@ const Hero = () => {
       <div>
         <h2 className="text-[40px] md:text-[60px] font-bold ">
           Premium Car Rental in Your Area
-          {/* <span className="text-blue-600">Rental</span> */}
         </h2>
         <h2 className="text-[20px] text-gray-500 pr-20 mt-5">
           Book the selected car effortlessly, Pay for driving only, Book the Car
