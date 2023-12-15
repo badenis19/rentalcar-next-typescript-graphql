@@ -18,7 +18,9 @@ const CarsFiltersOption = (props: Props) => {
           <option>Max to Min</option>
         </select>
         <select className="select select-bordered md:block max-w-xs hidden">
-          <option disabled selected>Manufacturer</option>
+          <option disabled selected>
+            Manufacturer
+          </option>
           <option>Audi</option>
           <option>BMW</option>
           <option>Ford</option>
