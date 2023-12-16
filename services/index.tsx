@@ -18,6 +18,7 @@ export const getCarsList = async () => {
         }
         seats
         carType
+        carBrand
       }
     }
   `;

@@ -8,21 +8,35 @@ import { getCarsList } from "@/services";
 import React, { useEffect, useState } from "react";
 
 const Home = () => {
+  const [carsList, setCarsList] = useState<any>([]);
+  const [carsOriginalList, setCarsOriginalList] = useState<any>([]);
+  const [brand, setBrand] = useState<string>("");
+
   useEffect(() => {
     getCarList_();
   }, []);
 
-  const [carsList, setCarsList] = useState<any>([]);
+  const filterCarList_ = (brand: string) => {
+    const filterList = carsOriginalList.filter((item: any) => {
+      return item.carBrand == brand;
+    });
+    setCarsList(filterList);
+  };
+
   const getCarList_ = async () => {
     const result: any = await getCarsList();
     setCarsList(result?.carLists);
+    setCarsOriginalList(result?.carLists);
   };
 
   return (
     <div className="p-5 sm:px-10 md:px-20">
       <Hero />
       <SearchInput />
-      <CarsFiltersOption />
+      <CarsFiltersOption
+        carsList={carsOriginalList}
+        setBrand={(value: string) => filterCarList_(value)}
+      />
       <CarList carsList={carsList} />
     </div>
   );

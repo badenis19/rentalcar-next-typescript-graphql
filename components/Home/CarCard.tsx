@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaGasPump } from "react-icons/fa";
 import { MdAirlineSeatReclineNormal } from "react-icons/md";
 import { PiSteeringWheelFill } from "react-icons/pi";
@@ -18,7 +18,12 @@ type CarProps = {
 };
 
 const CarCard = ({ name, price, carAvg, image, seats, carType }: CarProps) => {
-  //   const [car, setCar] = useState<any>({ name, price, carAvg, image });
+  const [car, setCar] = useState<any>();
+
+  useEffect(() => {
+    if (name) setCar(name);
+  }, [name]);
+
   return (
     <div className="group bg-gray-50 p-2 sm:p-5 rounded-3xl m-1 sm:m-5 hover:bg-white  hover:border-[1px] cursor-pointer duration-50 border-blue-500   first-letter">
       <h2 className="text-[20px] font-medium mb-2">{name}</h2>
@@ -46,7 +51,7 @@ const CarCard = ({ name, price, carAvg, image, seats, carType }: CarProps) => {
         </div>
         <div className="text-center text-gray-500">
           <FaGasPump className="w-full text=[22px] mb-2" />
-          <h2 className="line-clamp-5 text-[14px] font-light">3 MPG</h2>
+          <h2 className="line-clamp-5 text-[14px] font-light">{carAvg}3 MPG</h2>
         </div>
       </div>
       <button className="hidden group-hover:flex bg-gradient-to-r from-blue-400 to-blue-700 p-2 rounded-lg text-white w-full px-5 justify-between">
