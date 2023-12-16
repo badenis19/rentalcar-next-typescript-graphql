@@ -15,7 +15,9 @@ export const getCarsList = async () => {
         updatedAt
         image {
             url
-          }
+        }
+        seats
+        carType
       }
     }
   `;
