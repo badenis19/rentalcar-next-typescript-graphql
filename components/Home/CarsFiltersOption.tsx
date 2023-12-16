@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // type CarsFiltersOptionProps = {};
 
-const CarsFiltersOption = ({ carsList, setBrand }: any) => {
+const CarsFiltersOption = ({ carsList, setBrand, orderCarList }: any) => {
   const [brandList, setBrandList] = useState<any>();
   const BrandSet = new Set();
 
@@ -16,9 +16,13 @@ const CarsFiltersOption = ({ carsList, setBrand }: any) => {
     carsList?.forEach((element: any) => {
       BrandSet.add(element.carBrand);
     });
-    // console.log(BrandSet);
     setBrandList(Array.from(BrandSet));
   };
+
+  console.log(carsList);
+
+  //grab all prices
+  //filter from small to big and opposite
 
   return (
     <div className="mt-10 flex items-center justify-between">
@@ -27,12 +31,15 @@ const CarsFiltersOption = ({ carsList, setBrand }: any) => {
         <h2>Explore our superb range of cars</h2>
       </div>
       <div className="flex gap-5">
-        <select className="select select-bordered w-full max-w-xs">
+        <select
+          onChange={(e) => orderCarList(e.target.value)}
+          className="select select-bordered w-full max-w-xs"
+        >
           <option disabled selected>
             Price
           </option>
-          <option>Min to Max</option>
-          <option>Max to Min</option>
+          <option value={-1}>Min to Max</option>
+          <option value={1}>Max to Min</option>
         </select>
         <select
           //   onChange={(e) => filterCarList_(e.target.value)}
@@ -42,9 +49,10 @@ const CarsFiltersOption = ({ carsList, setBrand }: any) => {
           <option disabled selected>
             Manufacturer
           </option>
-          {brandList && brandList?.map((brand: string, index: number) => {
-            return <option key={index}>{brand}</option>;
-          })}
+          {brandList &&
+            brandList?.map((brand: string, index: number) => {
+              return <option key={index}>{brand}</option>;
+            })}
         </select>
       </div>
     </div>
