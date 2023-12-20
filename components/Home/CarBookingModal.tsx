@@ -1,21 +1,34 @@
 import React from "react";
+import CarCard from "./CarCard";
+import Form from "./Form";
 
-type Props = {};
-
-const CarBookingModal = (props: Props) => {
+const CarBookingModal = ({ car }: any) => {
   return (
-    // <div>
     <form method="dialog" className="modal-box w-11/12 max-w-5xl">
-      <h3 className="font-bold text-lg">Hello!</h3>
-      <p className="py-4">Click the button below to close</p>
+      <div className="border-b-[1px] pb-2 ">
+        <h3 className="text-[30px] font-light text-gray-400">
+          Rent a Car Now!
+        </h3>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 p-5">
+        <div>
+          <CarCard
+            name={car?.name}
+            price={car?.price}
+            carAvg={car?.carAvg}
+            image={car?.image}
+            seats={car?.seats}
+            carType={car?.carType}
+          />
+        </div>
+        <div className="">
+            <Form />
+        </div>
+      </div>
       <div className="modal-action">
-        <form method="dialog">
-          {/* if there is a button, it will close the modal */}
-          <button className="btn">Close</button>
-        </form>
+        <button className="btn">Close</button>
       </div>
     </form>
-    // </div>
   );
 };
 

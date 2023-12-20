@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import CarBookingModal from "./CarBookingModal";
 import CarCard from "./CarCard";
 
@@ -8,11 +9,18 @@ type carListProps = {
 };
 
 const CarsList = ({ carsList }: carListProps) => {
+  //   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedCar, setSelectedCar] = useState<any>([]);
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {carsList?.map((car: any, index: number) => (
-        // <div key={index} onClick={() => console.log('first')}>
-        <div key={index} onClick={() => (window as any).my_modal_4.showModal()}>
+        <div
+          key={index}
+          onClick={() => {
+            (window as any).my_modal_4.showModal();
+            setSelectedCar(car);
+          }}
+        >
           <CarCard
             name={car?.name}
             price={car?.price}
@@ -23,15 +31,10 @@ const CarsList = ({ carsList }: carListProps) => {
           />
         </div>
       ))}
-      {/* You can open the modal using document.getElementById('ID').showModal() method */}
-      <button
-        className="btn"
-        // onClick={() =>}
-      >
-        open modal
-      </button>
+
+      <button className="btn">open modal</button>
       <dialog id="my_modal_4" className="modal">
-        <CarBookingModal />
+        <CarBookingModal car={selectedCar} />
       </dialog>
     </div>
   );

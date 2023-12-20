@@ -40,7 +40,7 @@ const CarCard = ({ name, price, carAvg, image, seats, carType }: CarProps) => {
         alt={name}
         width={220}
         height={200}
-        className="w-[250px] h-[150px] mb-3 object-contain"
+        className="w-[250px] h-[150px] mb-3 object-contain content-center m-auto"
       />
       <div className="flex justify-around group-hover:hidden">
         <div className="text-center text-gray-500">
@@ -66,9 +66,9 @@ const CarCard = ({ name, price, carAvg, image, seats, carType }: CarProps) => {
             className="w-4 h-4 text-white"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
         </span>
