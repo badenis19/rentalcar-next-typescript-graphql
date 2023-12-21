@@ -3,6 +3,16 @@ import React, { useEffect, useState } from "react";
 
 const Form = () => {
   const [addressList, setAddressList] = useState<any>([]);
+  const [formValue, setFormValue] = useState<any>({
+    location: "",
+    pickUpDate: "",
+    dropOffDate: "",
+    pickUpTime: "",
+    dropOffTime: "",
+    contactNumber: "",
+  });
+
+  const today: any = new Date();
 
   useEffect(() => {
     getAddressList_();
@@ -13,6 +23,17 @@ const Form = () => {
     setAddressList(result.storesLocations);
   };
 
+  const handleChange = (event: any) => {
+    setFormValue({
+      ...formValue,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = () => {
+    console.log(formValue);
+  };
+
   return (
     <div>
       <div className="flex flex-col w-full mb-5">
@@ -20,6 +41,7 @@ const Form = () => {
         <select
           className="select  select-bordered w-full max-w-lg"
           name="location"
+          onChange={handleChange}
         >
           <option disabled selected>
             PickUp Location?
@@ -34,19 +56,22 @@ const Form = () => {
           <label className="text-gray-400">Pick Up Date</label>
           <input
             type="date"
-            min="Wed Dec 20 2023 14:33:36 GMT+0000 (Greenwich Mean Time)"
+            min={today}
             placeholder="Type here"
             className="input input-bordered w-full max-w-lg"
             name="pickUpDate"
+            onChange={handleChange}
           />
         </div>
         <div className="flex flex-col w-full">
           <label className="text-gray-400">Drop Off Date</label>
           <input
             type="date"
+            // min={today}
             placeholder="Type here"
             className="input input-bordered w-full max-w-lg"
             name="dropOffDate"
+            onChange={handleChange}
           />
         </div>
         <div className="flex gap-5 ">
@@ -57,6 +82,7 @@ const Form = () => {
               placeholder="Type here"
               className="input input-bordered w-full max-w-lg"
               name="pickUpTime"
+              onChange={handleChange}
             />
           </div>
           <div className="flex flex-col w-full mb-5">
@@ -66,6 +92,7 @@ const Form = () => {
               placeholder="Type here"
               className="input input-bordered w-full max-w-lg"
               name="dropOffTime"
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -77,11 +104,15 @@ const Form = () => {
           placeholder="Type here"
           className="input input-bordered w-full max-w-lg"
           name="contactNumber"
+          onChange={handleChange}
         />
       </div>
       <div className="modal-action">
         <button className="btn">Close</button>
-        <button className="btn bg-blue-500 text-white hover:bg-blue-800">
+        <button
+          onClick={() => handleSubmit()}
+          className="btn bg-purple-500 text-white hover:bg-purple-800"
+        >
           Save
         </button>
       </div>
@@ -90,4 +121,3 @@ const Form = () => {
 };
 
 export default Form;
-  

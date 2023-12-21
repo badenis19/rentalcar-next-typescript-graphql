@@ -31,7 +31,6 @@ const CarCard = ({
 
   useEffect(() => {
     if (name) setCar(name);
-    console.log(">", inForm);
   }, [name]);
 
   return (
@@ -50,7 +49,14 @@ const CarCard = ({
         height={200}
         className="w-[250px] h-[150px] mb-3 object-contain content-center m-auto"
       />
-      <div className="flex justify-around group-hover:hidden">
+
+      <div
+        className={
+          inForm
+            ? "flex justify-around group-hover:hidden"
+            : "flex justify-around"
+        }
+      >
         <div className="text-center text-gray-500">
           <PiSteeringWheelFill className="w-full text=[22px] mb-2" />
           <h2 className="line-clamp-5 text-[14px] font-light">{carType}</h2>
