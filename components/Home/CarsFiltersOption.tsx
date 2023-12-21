@@ -19,11 +19,6 @@ const CarsFiltersOption = ({ carsList, setBrand, orderCarList }: any) => {
     setBrandList(Array.from(BrandSet));
   };
 
-  console.log(carsList);
-
-  //grab all prices
-  //filter from small to big and opposite
-
   return (
     <div className="mt-10 flex items-center justify-between">
       <div>

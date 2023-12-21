@@ -2,6 +2,8 @@
 
 import request, { gql } from "graphql-request";
 
+const urlMaster = "https://api-eu-west-2.hygraph.com/v2/clq6f8gfn43dn01uo4uau9o9x/master";
+
 export const getCarsList = async () => {
   const query = gql`
     query CarLists {
@@ -14,7 +16,7 @@ export const getCarsList = async () => {
         publishedAt
         updatedAt
         image {
-            url
+          url
         }
         seats
         carType
@@ -23,9 +25,19 @@ export const getCarsList = async () => {
     }
   `;
 
-  const result = await request(
-    "https://api-eu-west-2.hygraph.com/v2/clq6f8gfn43dn01uo4uau9o9x/master",
-    query
-  );
+  const result = await request(urlMaster, query);
+  return result;
+};
+
+export const getAddressList = async () => {
+  const query = gql`
+    query MyQuery {
+      storesLocations {
+        address
+      }
+    }
+  `;
+
+  const result = await request(urlMaster, query);
   return result;
 };

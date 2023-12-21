@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
   const [carsList, setCarsList] = useState<any>([]);
   const [carsOriginalList, setCarsOriginalList] = useState<any>([]);
-  const [brand, setBrand] = useState<string>("");
+  // const [brand, setBrand] = useState<string>("");
 
   useEffect(() => {
     getCarList_();
