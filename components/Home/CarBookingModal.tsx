@@ -19,6 +19,7 @@ const CarBookingModal = ({ car }: any) => {
             image={car?.image}
             seats={car?.seats}
             carType={car?.carType}
+            inForm={false}
           />
         </div>
         <div className="">

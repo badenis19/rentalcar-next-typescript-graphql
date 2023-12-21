@@ -28,11 +28,11 @@ const CarsList = ({ carsList }: carListProps) => {
             image={car?.image}
             seats={car?.seats}
             carType={car?.carType}
+            inForm={true}
           />
         </div>
       ))}
 
-      <button className="btn">open modal</button>
       <dialog id="my_modal_4" className="modal">
         <CarBookingModal car={selectedCar} />
       </dialog>
