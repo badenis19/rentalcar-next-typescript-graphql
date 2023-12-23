@@ -23,16 +23,9 @@ const CarBookingModal = ({ car }: any) => {
           />
         </div>
         <div className="">
-            <Form />
+          <Form car={car} />
         </div>
       </div>
-
-      {/* <div className="modal-action">
-        <button className="btn">Close</button>
-        <button className="btn bg-purple-500 text-white hover:bg-purple-800">
-          Save
-        </button>
-      </div> */}
     </form>
   );
 };

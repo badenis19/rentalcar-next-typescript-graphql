@@ -1,16 +1,28 @@
-import { getAddressList } from "@/services";
+import { createBooking, getAddressList } from "@/services";
 import React, { useEffect, useState } from "react";
 
-const Form = () => {
+const Form = ({ car }: any) => {
   const [addressList, setAddressList] = useState<any>([]);
   const [formValue, setFormValue] = useState<any>({
     location: "",
     pickUpDate: "",
     dropOffDate: "",
     pickUpTime: "",
-    dropOffTime: "",
+    dropOffTime: "", 
     contactNumber: "",
+    userName: "Kweku Agyapong",
+    carId: '',
   });
+
+  useEffect(() => {
+    if (car) {
+      setFormValue({
+        ...formValue,
+        carId: { connect: { id: car.id } },
+      });
+    }
+  }, []);
+  
 
   const today: any = new Date();
 
@@ -30,8 +42,10 @@ const Form = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(formValue);
+    const resp = await createBooking(formValue);
+    console.log(resp)
   };
 
   return (
