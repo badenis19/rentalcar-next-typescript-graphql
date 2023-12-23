@@ -1,17 +1,22 @@
+import { BookingCreatedFlagContext } from "@/context/BookingCreatedFlagContext";
 import { createBooking, getAddressList } from "@/services";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const Form = ({ car }: any) => {
   const [addressList, setAddressList] = useState<any>([]);
+  const { showToastMessage, setShowToastMessage } = useContext(
+    BookingCreatedFlagContext
+  );
+
   const [formValue, setFormValue] = useState<any>({
     location: "",
     pickUpDate: "",
     dropOffDate: "",
     pickUpTime: "",
-    dropOffTime: "", 
+    dropOffTime: "",
     contactNumber: "",
     userName: "Kweku Agyapong",
-    carId: '',
+    carId: "",
   });
 
   useEffect(() => {
@@ -22,7 +27,6 @@ const Form = ({ car }: any) => {
       });
     }
   }, []);
-  
 
   const today: any = new Date();
 
@@ -43,9 +47,12 @@ const Form = ({ car }: any) => {
   };
 
   const handleSubmit = async () => {
+    setShowToastMessage(true);
     console.log(formValue);
     const resp = await createBooking(formValue);
-    console.log(resp)
+    console.log(resp);
+    // if (resp) {
+    // }
   };
 
   return (
@@ -135,3 +142,9 @@ const Form = ({ car }: any) => {
 };
 
 export default Form;
+
+<div className="toast toast-top toast-end">
+  <div className="alert alert-info">
+    <span>New mail arrived.</span>
+  </div>
+</div>;
