@@ -61,7 +61,7 @@ const Home = () => {
         />
         <CarList carsList={carsList} />
         {showToastMessage ? (
-          <ToastMsg msg="Car successfully booked! Come again!" />
+          <ToastMsg msg="Car successfully booked! Thank you. Come again!" />
         ) : null}
       </BookingCreatedFlagContext.Provider>
     </div>

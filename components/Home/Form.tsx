@@ -49,8 +49,8 @@ const Form = ({ car }: any) => {
   const handleSubmit = async () => {
     setShowToastMessage(true);
     console.log(formValue);
-    const resp = await createBooking(formValue);
-    console.log(resp);
+    // const resp = await createBooking(formValue);
+    // console.log(resp);
     // if (resp) {
     // }
   };
@@ -72,12 +72,13 @@ const Form = ({ car }: any) => {
           })}
         </select>
       </div>
+
       <div className="flex flec-col gap-5 mb-5">
         <div className="flex flex-col w-full">
           <label className="text-gray-400">Pick Up Date</label>
           <input
             type="date"
-            min={today}
+            // min={today}
             placeholder="Type here"
             className="input input-bordered w-full max-w-lg"
             name="pickUpDate"
@@ -95,6 +96,8 @@ const Form = ({ car }: any) => {
             onChange={handleChange}
           />
         </div>
+      </div>
+      <div className="flex flec-col gap-5 mb-5">
         <div className="flex gap-5 ">
           <div className="flex flex-col w-full mb-5">
             <label className="text-gray-400">Pick Up Time</label>
@@ -142,9 +145,3 @@ const Form = ({ car }: any) => {
 };
 
 export default Form;
-
-<div className="toast toast-top toast-end">
-  <div className="alert alert-info">
-    <span>New mail arrived.</span>
-  </div>
-</div>;
